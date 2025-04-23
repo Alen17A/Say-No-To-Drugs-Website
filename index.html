@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Say No to Drugs Campaign</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            /* background-image: url('https://source.unsplash.com/random/1600x900/?abstract,dark'); */
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        section {
+            padding: 80px 0;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            position: relative;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+            color: #ffffff;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Background overlay */
+        .bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 1;
+        }
+
+        /* Header styles */
+        header {
+            background-color: transparent;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #e74c3c;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            transition: color 0.3s ease;
+            color: white;
+        }
+
+        .nav-links a:hover {
+            color: #e74c3c;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* Hero section */
+        .hero {
+            background-image: url('https://source.unsplash.com/random/1600x900/?drugs,prevention');
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 0;
+            padding-top: 0;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: 400;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Why Say No section */
+        .why-say-no {
+            background-image: url('https://source.unsplash.com/random/1600x900/?youth,health');
+            position: relative;
+            color: white;
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .reason-card {
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .reason-card:hover {
+            transform: translateY(-10px);
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .reason-card i {
+            font-size: 2.5rem;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+
+        .reason-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        /* Impact section */
+        .impact {
+            background-image: url('https://source.unsplash.com/random/1600x900/?addiction,statistics');
+            color: white;
+        }
+
+        .impact .bg-overlay {
+            background: linear-gradient(to right, rgba(52, 152, 219, 0.7), rgba(155, 89, 182, 0.7));
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-item {
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Prevention section */
+        .prevention {
+            background-image: url('https://source.unsplash.com/random/1600x900/?prevention,education');
+            color: white;
+        }
+
+        .tips-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tip-item {
+            display: flex;
+            margin-bottom: 30px;
+            align-items: flex-start;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tip-icon {
+            font-size: 1.5rem;
+            color: #e74c3c;
+            margin-right: 20px;
+            min-width: 30px;
+        }
+
+        .tip-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        /* Support section */
+        .support {
+            background-image: url('https://source.unsplash.com/random/1600x900/?support,help');
+            color: white;
+        }
+
+        .support .bg-overlay {
+            background: linear-gradient(45deg, rgba(231, 76, 60, 0.7), rgba(41, 128, 185, 0.7));
+        }
+
+        .support-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .support-card {
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .support-card i {
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .support-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .support-card .contact {
+            font-weight: 700;
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin-top: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-image: url('https://source.unsplash.com/random/1600x900/?community');
+            color: white;
+            padding: 50px 0 20px;
+            position: relative;
+        }
+
+        footer .bg-overlay {
+            background: linear-gradient(to right, rgba(44, 62, 80, 0.8), rgba(52, 73, 94, 0.8));
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a:hover {
+            color: #e74c3c;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: #e74c3c;
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Form input styling */
+        input[type="email"] {
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+            margin-bottom: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        input[type="email"]::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.9);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            section {
+                padding: 60px 0;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-hand-holding-medical"></i>
+                <span>Say No to Drugs</span>
+            </a>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#why">Why Say No</a></li>
+                <li><a href="#impact">Impact</a></li>
+                <li><a href="#prevention">Prevention</a></li>
+                <li><a href="#support">Support</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="bg-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="hero-title">Say No to Drugs - Yes to Life</h1>
+            <p class="hero-subtitle">Your future matters. Choose health, choose hope.</p>
+            <a href="#why" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Why Say No Section -->
+    <section class="why-say-no" id="why">
+        <div class="bg-overlay"></div>
+        <div class="container">
+            <h2 class="section-title">Why Say No to Drugs?</h2>
+            <p class="section-subtitle">Drugs can have devastating effects on your health, relationships, and future.
+                Here's why saying no is the right choice:</p>
+
+            <div class="reasons-grid">
+                <div class="reason-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Protect Your Brain</h3>
+                    <p>Drug use can permanently alter brain chemistry and structure, especially in developing brains of
+                        young people.</p>
+                </div>
+
+                <div class="reason-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Preserve Your Health</h3>
+                    <p>Drugs can cause serious health problems including heart disease, stroke, cancer, and mental
+                        health disorders.</p>
+                </div>
+
+                <div class="reason-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Secure Your Future</h3>
+                    <p>Drug use can derail education and career goals, limiting your opportunities and potential.</p>
+                </div>
+
+                <div class="reason-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Strengthen Relationships</h3>
+                    <p>Drug addiction often damages relationships with family and friends, leading to isolation and loss
+                        of support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact" id="impact">
+        <div class="bg-overlay"></div>
+        <div class="container">
+            <h2 class="section-title">Impact of Drug Abuse</h2>
+            <p class="section-subtitle">The statistics tell a sobering story about how drug abuse affects individuals
+                and communities:</p>
+
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">70%</div>
+                    <p class="stat-label">of incarcerated individuals have substance abuse issues</p>
+                </div>
+
+                <div class="stat-item">
+                    <div class="stat-number">$740B</div>
+                    <p class="stat-label">Annual cost of drug abuse to society in healthcare, crime, and lost
+                        productivity</p>
+                </div>
+
+                <div class="stat-item">
+                    <div class="stat-number">67%</div>
+                    <p class="stat-label">of high school students who use drugs will continue into adulthood</p>
+                </div>
+
+                <div class="stat-item">
+                    <div class="stat-number">90%</div>
+                    <p class="stat-label">of addictions start during the teenage years</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prevention Section -->
+    <section class="prevention" id="prevention">
+        <div class="bg-overlay"></div>
+        <div class="container">
+            <h2 class="section-title">Tips for Prevention</h2>
+            <p class="section-subtitle">Prevention starts with awareness and education. Here are some effective
+                strategies to help prevent drug abuse:</p>
+
+            <div class="tips-container">
+                <div class="tip-item">
+                    <div class="tip-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="tip-content">
+                        <h3>Open Communication</h3>
+                        <p>Maintain open, honest conversations about drugs and their dangers. Create a safe space where
+                            questions can be asked without judgment.</p>
+                    </div>
+                </div>
+
+                <div class="tip-item">
+                    <div class="tip-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="tip-content">
+                        <h3>Education</h3>
+                        <p>Learn about different drugs, their effects, and the risks associated with them. Knowledge is
+                            power when it comes to making informed decisions.</p>
+                    </div>
+                </div>
+
+                <div class="tip-item">
+                    <div class="tip-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <div class="tip-content">
+                        <h3>Peer Support</h3>
+                        <p>Surround yourself with positive influences who support your decision to stay drug-free. Peer
+                            pressure works both ways!</p>
+                    </div>
+                </div>
+
+                <div class="tip-item">
+                    <div class="tip-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <div class="tip-content">
+                        <h3>Healthy Alternatives</h3>
+                        <p>Engage in sports, arts, community service, or other activities that provide natural highs and
+                            a sense of purpose and accomplishment.</p>
+                    </div>
+                </div>
+
+                <div class="tip-item">
+                    <div class="tip-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="tip-content">
+                        <h3>Coping Skills</h3>
+                        <p>Develop healthy ways to deal with stress, anxiety, and peer pressure. Mindfulness, exercise,
+                            and creative outlets can all help.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="support" id="support">
+        <div class="bg-overlay"></div>
+        <div class="container">
+            <h2 class="section-title">Support Resources</h2>
+            <p class="section-subtitle">If you or someone you know is struggling with drug abuse, help is available.
+                These resources provide support, information, and treatment options:</p>
+
+            <div class="support-options">
+                <div class="support-card">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>Helplines</h3>
+                    <p>24/7 confidential support for individuals and family members affected by drug abuse.</p>
+                    <div class="contact">1-800-662-HELP (4357)</div>
+                </div>
+
+                <div class="support-card">
+                    <i class="fas fa-hospital"></i>
+                    <h3>Treatment Centers</h3>
+                    <p>Professional facilities offering detox, rehabilitation, and ongoing recovery support.</p>
+                    <a href="#" class="btn">Find Near You</a>
+                </div>
+
+                <div class="support-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Support Groups</h3>
+                    <p>Community-based groups providing peer support and encouragement for recovery.</p>
+                    <a href="#" class="btn">Join a Group</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="bg-overlay"></div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Say No to Drugs</h3>
+                    <p>A campaign dedicated to raising awareness about drug abuse and promoting a healthier, drug-free
+                        community.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#why">Why Say No</a></li>
+                        <li><a href="#impact">Impact</a></li>
+                        <li><a href="#prevention">Prevention</a></li>
+                        <li><a href="#support">Support</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Educational Materials</a></li>
+                        <li><a href="#">Research & Statistics</a></li>
+                        <li><a href="#">Recovery Stories</a></li>
+                        <li><a href="#">Community Programs</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <p style="margin-top: 20px;">Sign up for our newsletter to stay informed:</p>
+                    <form style="margin-top: 10px;">
+                        <input type="email" placeholder="Your email">
+                        <button type="submit" class="btn" style="width: 100%;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2023 Say No to Drugs Campaign. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+
+                    // Calculate header height for offset
+                    const headerHeight = document.querySelector('header').offsetHeight;
+
+                    // Scroll to target with offset
+                    window.scrollTo({
+                        top: targetElement.offsetTop - headerHeight,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animate stats when in viewport
+        const statNumbers = document.querySelectorAll('.stat-number');
+        let animated = false;
+
+        function animateStats() {
+            if (animated) return;
+
+            const impactSection = document.querySelector('.impact');
+            const position = impactSection.getBoundingClientRect();
+
+            // If impact section is in viewport
+            if (position.top < window.innerHeight && position.bottom >= 0) {
+                statNumbers.forEach(stat => {
+                    const target = parseInt(stat.textContent.replace(/[^\d]/g, ''));
+                    let count = 0;
+                    const duration = 2000; // 2 seconds
+                    const interval = Math.floor(duration / target);
+
+                    const counter = setInterval(() => {
+                        count += 1;
+
+                        if (count >= target) {
+                            clearInterval(counter);
+                            stat.textContent = stat.textContent; // Set final text with any symbols
+                        } else {
+                            // Keep any non-numeric characters
+                            const format = stat.textContent.replace(/[\d]/g, '');
+                            stat.textContent = count + format;
+                        }
+                    }, interval);
+                });
+
+                animated = true;
+            }
+        }
+
+        // Check if stats are in viewport on scroll
+        window.addEventListener('scroll', animateStats);
+        // Also check on page load
+        window.addEventListener('load', animateStats);
+
+        // Change header background on scroll
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+
+</html>

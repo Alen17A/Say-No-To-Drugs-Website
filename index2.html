@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Say No to Drugs Campaign</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #ff4d4d;
+            --primary-green: #4dff4d;
+            --dark-blue: #1a1a2e;
+            --purple: #6c63ff;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #ffffff;
+            background-image: url("data:image/svg+xml,%3Csvg width='300' height='300' viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='M20 20c0-3.3 2.7-6 6-6h248c3.3 0 6 2.7 6 6v260c0 3.3-2.7 6-6 6H26c-3.3 0-6-2.7-6-6V20z' stroke='%23F5F5F5' stroke-width='2'/%3E%3Ctext x='50%' y='50%' font-family='Arial' font-size='12' fill='%23e0e0e0' text-anchor='middle' dominant-baseline='middle' transform='rotate(-45 150 150)'%3ESay No To Drugs%3C/text%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--dark-color);
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+
+        .logo span {
+            color: var(--primary-red);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 600;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-red);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 5%;
+            position: relative;
+            overflow: hidden;
+            background-color: var(--light-color);
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            color: var(--dark-color);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: #555;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-red), var(--purple));
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1.4s ease;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Main Content - Card Layout */
+        .main-content {
+            padding: 50px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-red), var(--primary-green));
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            padding: 1.5rem;
+            color: white;
+            font-weight: 600;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .why-no {
+            background: linear-gradient(90deg, var(--primary-red), var(--primary-green));
+        }
+
+        .impact {
+            background: linear-gradient(135deg, var(--primary-red), #ff7b7b);
+        }
+
+        .prevention {
+            background: linear-gradient(135deg, #2ecc71, var(--primary-green));
+        }
+
+        .support {
+            background: linear-gradient(135deg, #3498db, var(--purple));
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            background-color: white;
+            flex-grow: 1;
+        }
+
+        .card-body ul {
+            padding-left: 1.5rem;
+        }
+
+        .card-body li {
+            margin-bottom: 0.8rem;
+        }
+
+        .card-body .icon {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .card-body .icon i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+            color: var(--primary-red);
+        }
+
+        .card-body .stat {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark-blue);
+        }
+
+        .helpline {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .helpline:hover {
+            transform: translateX(10px);
+            background-color: #f1f1f1;
+        }
+
+        .helpline i {
+            margin-right: 15px;
+            font-size: 1.5rem;
+            color: var(--purple);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-blue);
+            color: white;
+            padding: 3rem 5%;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-info {
+            flex: 1;
+            min-width: 300px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-info h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-red);
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin-right: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-red);
+            transform: translateY(-5px);
+        }
+
+        .footer-links {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-red);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            width: 100%;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: left 0.3s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">Say <span>NO</span> to Drugs</a>
+            <ul class="nav-links">
+                <li><a href="#why">Why Say No</a></li>
+                <li><a href="#impact">Impact</a></li>
+                <li><a href="#prevention">Prevention</a></li>
+                <li><a href="#support">Support</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Take Control of Your Future</h1>
+            <p>Join our movement to build a healthier society free from the harmful effects of drug abuse. Your choices
+                today shape your tomorrow.</p>
+            <a href="#why" class="hero-btn">Learn More</a>
+        </div>
+    </section>
+
+    <div class="main-content">
+        <h2 class="section-title">Choose Life, Choose Health</h2>
+
+        <div class="card-container">
+            <div class="card" id="why">
+                <div class="card-header why-no">Why Say No to Drugs?</div>
+                <div class="card-body">
+                    <ul>
+                        <li>Drugs alter brain function and can lead to addiction, affecting decision-making abilities.
+                        </li>
+                        <li>They can cause severe physical health problems including heart disease, stroke, and cancer.
+                        </li>
+                        <li>Drug abuse often leads to mental health issues like depression, anxiety, and psychosis.</li>
+                        <li>Maintaining sobriety allows you to fully experience and appreciate life's meaningful
+                            moments.</li>
+                        <li>Saying no preserves your freedom to make clear, intentional choices about your future.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card" id="impact">
+                <div class="card-header impact">Impact of Drug Abuse</div>
+                <div class="card-body">
+                    <div class="stat">70%</div>
+                    <p>Of incarcerated individuals had substance abuse issues prior to imprisonment</p>
+
+                    <div class="icon">
+                        <i class="fas fa-heartbeat"></i>
+                        <p>Higher risk of cardiovascular problems</p>
+                    </div>
+
+                    <div class="icon">
+                        <i class="fas fa-brain"></i>
+                        <p>Permanent changes to brain chemistry</p>
+                    </div>
+
+                    <div class="icon">
+                        <i class="fas fa-users"></i>
+                        <p>Damaged relationships with family and friends</p>
+                    </div>
+
+                    <div class="icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <p>Financial instability and economic burden</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" id="prevention">
+                <div class="card-header prevention">Tips for Prevention</div>
+                <div class="card-body">
+                    <ul>
+                        <li><strong>Educate yourself</strong> about the true effects of drugs on your body and mind.
+                        </li>
+                        <li><strong>Build strong connections</strong> with positive influences in your community.</li>
+                        <li><strong>Develop healthy coping mechanisms</strong> for stress and emotional challenges.</li>
+                        <li><strong>Engage in regular physical activity</strong> to naturally boost your mood.</li>
+                        <li><strong>Practice saying "no"</strong> confidently when offered drugs.</li>
+                        <li><strong>Seek help early</strong> if you're struggling with temptation or experimentation.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card" id="support">
+                <div class="card-header support">Support & Helplines</div>
+                <div class="card-body">
+                    <div class="helpline">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>National Helpline</h4>
+                            <p>1-800-662-HELP (4357)</p>
+                        </div>
+                    </div>
+
+                    <div class="helpline">
+                        <i class="fas fa-comments"></i>
+                        <div>
+                            <h4>Crisis Text Line</h4>
+                            <p>Text HOME to 741741</p>
+                        </div>
+                    </div>
+
+                    <div class="helpline">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <h4>Support Groups</h4>
+                            <p>Find local NA/AA meetings</p>
+                        </div>
+                    </div>
+
+                    <div class="helpline">
+                        <i class="fas fa-hand-holding-medical"></i>
+                        <div>
+                            <h4>Treatment Locator</h4>
+                            <p>findtreatment.samhsa.gov</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>Say NO to Drugs Campaign</h3>
+                <p>Our mission is to create awareness about the dangers of drug abuse and provide resources for
+                    prevention and recovery.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#why">Why Say No</a></li>
+                    <li><a href="#impact">Impact</a></li>
+                    <li><a href="#prevention">Prevention</a></li>
+                    <li><a href="#support">Support</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Educational Materials</a></li>
+                    <li><a href="#">Research Articles</a></li>
+                    <li><a href="#">Community Programs</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 Say NO to Drugs Campaign. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') ?
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+
+                    // Calculate scroll position with offset for header
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll animation for cards
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply initial styles and observe cards
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+
+            if (window.scrollY > 50) {
+                header.style.padding = '0.5rem 0';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.padding = '1rem 0';
+                header.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
